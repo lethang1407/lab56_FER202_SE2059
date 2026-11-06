@@ -10,6 +10,7 @@ function Syllabus() {
     const [error, setError] = useState("");
     const [selectFilter, setSelectFilter] = useState("code");
     const [search, setSearch] = useState("");
+    const [searchKeyword, setSearchKeyword] = useState("");
 
     const navigate = useNavigate();
 
@@ -41,7 +42,7 @@ function Syllabus() {
         navigate("/");
     };
 
-    const kw = search.trim().toLowerCase();
+    const kw = searchKeyword.trim().toLowerCase();
 
     const filterSubject = subjects.filter((s) => {
         const matchSearch = s[selectFilter]
@@ -86,6 +87,12 @@ function Syllabus() {
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                     />
+                    <Button
+                        className="w-auto"
+                        onClick={() => setSearchKeyword(search)}
+                    >
+                        Search
+                    </Button>
                 </Row>
 
                 <Table striped bordered>
